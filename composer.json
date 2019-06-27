@@ -1,0 +1,17 @@
+{
+    "name": "slpcode/wangdiantong-sdk",
+    "description": "Package description here.",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "slpcode",
+            "email": "1370808424@qq.com"
+        }
+    ],
+    "require": {},
+    "autoload": {
+        "psr-4": {
+            "Slpcode\\WangdiantongSdk\\": "src"
+        }
+    }
+}
