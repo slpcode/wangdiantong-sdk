@@ -8,7 +8,11 @@
             "email": "1370808424@qq.com"
         }
     ],
-    "require": {},
+    "require": {
+        "hanson/foundation-sdk": "^3.0",
+        "ext-json": "*",
+        "ext-iconv": "*"
+    },
     "autoload": {
         "psr-4": {
             "Slpcode\\WangdiantongSdk\\": "src"
