@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: tanbin
- * Date: 2019/6/27
- * Time: 15:30
- */
 
 namespace Slpcode\WangDianTongSdk;
 
@@ -13,6 +7,7 @@ use Hanson\Foundation\Foundation;
 
 /**
  * @property \Slpcode\WangDianTongSdk\Trade\Trade $trade
+ * @property \Slpcode\WangDianTongSdk\Goods\Goods $goods
  *
  * Class WangDianTong
  * @package Slpcode\WangDianTongSdk
@@ -20,7 +15,7 @@ use Hanson\Foundation\Foundation;
 class WangDianTongSdk extends Foundation
 {
     protected $providers = [
-        \Slpcode\WangDianTongSdk\Trade\ServiceProvider::class
+        ServiceProvider::class
     ];
 
     public function __construct($config)
