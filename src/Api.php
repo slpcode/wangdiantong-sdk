@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: tanbin
- * Date: 2019/6/27
- * Time: 15:30
- */
 
-namespace Slpcode\WangdiantongSdk;
+namespace Slpcode\WangDianTongSdk;
 
 
 use Hanson\Foundation\AbstractAPI;
@@ -26,15 +20,13 @@ class Api extends AbstractAPI
      * @param $appsecret
      * @param $sid
      * @param $baseUrl
-     * @param $shopNo
      */
-    public function __construct($appkey, $appsecret, $sid, $baseUrl, $shopNo)
+    public function __construct($appkey, $appsecret, $sid, $baseUrl)
     {
         $this->_appkey = $appkey;
         $this->_appsecret = $appsecret;
         $this->_sid = $sid;
         $this->_baseUrl = $baseUrl;
-        $this->_shopNo = $shopNo;
     }
 
     public function request($method, $url, $params)
@@ -44,8 +36,12 @@ class Api extends AbstractAPI
         $params = array_merge($this->systemParams(), $params);
         $params['sign'] = $this->sign($params);
 
+        $baseUrl = Helper::finish($this->getBaseUrl(), '/');
+
+        $link = $baseUrl . $url;
+
         /** @var ResponseInterface $response */
-        $response = call_user_func_array([$http, $method], [$url, $params]);
+        $response = call_user_func_array([$http, $method], [$link, $params]);
 
         return json_decode(strval($response->getBody()), true);
     }
@@ -157,7 +153,7 @@ class Api extends AbstractAPI
     public function getBaseUrl($autoAppendCommonPath = true)
     {
         if ($autoAppendCommonPath) {
-            return $this->_baseUrl . '/openapi2';
+            return Helper::finish($this->_baseUrl, '/') . 'openapi2';
         }
         return $this->_baseUrl;
     }
