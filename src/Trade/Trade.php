@@ -54,6 +54,8 @@ class Trade extends Api
     }
 
     /**
+     * 获取ERP销售订单的出库单信息 查询销售出库单
+     *
      * @param $start_time
      * @param $end_time
      * @param array $otherParams
@@ -75,8 +77,12 @@ class Trade extends Api
     }
 
     /**
+     * ERP销售订单的发货状态、物流单号等同步给其他系统。
+     * 注：”查询物流同步”与“物流同步回写”两个接口配合使用，完成“销售订单发货同步”
+     * 查询物流同步
+     *
      * @param $limit
-     * @param bool $shop_no
+     * @param string $shop_no
      * @param int $is_part_sync_able
      * @return mixed
      */
@@ -102,6 +108,9 @@ class Trade extends Api
     }
 
     /**
+     * 同步发货状态、物流单号给平台是否成功的状态回传给ERP
+     * 物流同步回写
+     *
      * @param $logistics_list
      * @return mixed
      */
@@ -117,6 +126,10 @@ class Trade extends Api
     }
 
     /**
+     * 获取变化后的ERP可销库存，并同步至平台店铺
+     * 注：”查询同步库存”与“库存同步回写”两个接口配合使用，完成“库存同步”
+     * 查询同步库存
+     *
      * @param $shop_no
      * @param $limit
      * @return mixed
@@ -133,6 +146,12 @@ class Trade extends Api
         return $this->request('post', $url, $params);
     }
 
+    /**
+     * 库存量同步至平台是否成功的状态回传给ERP 库存同步回写
+     *
+     * @param $stock_sync_list
+     * @return mixed
+     */
     public function apiGoodsStockChangeAck($stock_sync_list)
     {
         $url = 'api_goods_stock_change_ack.php';

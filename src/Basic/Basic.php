@@ -52,7 +52,7 @@ class Basic extends Api
     }
 
     /**
-     * 获取ERP的物流公司档案资料	查询物流
+     * 获取ERP的物流公司档案资料 查询物流
      *
      * @param array $otherParams
      * @return mixed
